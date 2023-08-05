@@ -13,3 +13,11 @@ variable "app_vpc" {
   description = "app_vpc module variables"
 }
 
+# Secundary IPV4 vars
+variable "secondary_cidr" {
+  type = object({
+    use_secundary_ipv4 = bool
+    cidr_block     = list(string)
+  })
+  description = "list of a secundary IPV4 to add to the vpc"
+}

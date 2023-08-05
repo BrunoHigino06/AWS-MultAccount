@@ -16,3 +16,10 @@ resource "aws_vpc" "vpc" {
     {Name = var.vpc.name}
   )
 }
+
+# Secundary IPV4 
+resource "aws_vpc_ipv4_cidr_block_association" "secondary_cidr" {
+  count      = use_secundary_ipv4 ? length(var.secondary_cidr.cidr_block) : 0
+  vpc_id     = aws_vpc.vpc.id
+  cidr_block = var.secondary_cidr.cidr_block[count.index]
+}

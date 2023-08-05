@@ -4,4 +4,6 @@ module "app_vpc" {
   vpc = merge(var.app_vpc,
     {tags = var.tags}
   )
+
+  secondary_cidr = var.secondary_cidr
 }
