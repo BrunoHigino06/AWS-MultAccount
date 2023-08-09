@@ -27,4 +27,8 @@ variable "secondary_cidr" {
     cidr_block     = list(string)
   })
   description = "list of a secundary IPV4 to add to the vpc"
+  default = {
+    use_secundary_ipv4 = false
+    cidr_block = [null]
+  }
 }

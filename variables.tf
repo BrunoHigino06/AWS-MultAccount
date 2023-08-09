@@ -4,20 +4,34 @@ variable "tags" {
   description = "Tags for common use"
 }
 
-# vpc_app variables
-variable "app_vpc" {
-  type = object({
-    name       = string 
-    cidr_block = string
-  })
-  description = "app_vpc module variables"
+# app environment variables
+  # app_vpc variables
+    variable "app_vpc" {
+      type = object({
+        name       = string 
+        cidr_block = string
+      })
+      description = "app_vpc module variables"
+    }
+
+  # app_subnets variables
+  variable "app_subnet" {
+  type                                             = list(object({
+    name                                           = string
+    vpc_id                                         = optional(string)
+    cidr_block                                     = optional(string)
+    availability_zone                              = optional(string)
+    }))
+    description = "subnet variables"
+    default = null
 }
 
-# Secundary IPV4 vars
-variable "secondary_cidr" {
-  type = object({
-    use_secundary_ipv4 = bool
-    cidr_block     = list(string)
-  })
-  description = "list of a secundary IPV4 to add to the vpc"
-}
+# analytics environment variables
+  # analytics_vpc variables
+    variable "analytics_vpc" {
+      type = object({
+        name       = string 
+        cidr_block = string
+      })
+      description = "app_vpc module variables"
+    }
