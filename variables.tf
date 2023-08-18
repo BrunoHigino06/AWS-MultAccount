@@ -22,9 +22,9 @@ variable "tags" {
     cidr_block                                     = optional(string)
     availability_zone                              = optional(string)
     }))
-    description = "subnet variables"
+    description = "app subnet variables"
     default = null
-}
+  }
 
 # analytics environment variables
   # analytics_vpc variables
@@ -35,3 +35,14 @@ variable "tags" {
       })
       description = "app_vpc module variables"
     }
+  # analytics_subnets variables
+    variable "analytics_subnet" {
+      type                                             = list(object({
+        name                                           = string
+        vpc_id                                         = optional(string)
+        cidr_block                                     = optional(string)
+        availability_zone                              = optional(string)
+      }))
+      description = "analytics subnet variables"
+      default = null
+    }  
