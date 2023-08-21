@@ -20,7 +20,7 @@ resource "aws_route_table" "route_table" {
     }
 
   }
-  tags = merge(var.route_table[count.index].tags,
+  tags    = merge(var.route_table[count.index].tags,
     {Name = var.route_table[count.index].name}
   )
 }
