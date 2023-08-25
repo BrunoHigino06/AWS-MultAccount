@@ -59,6 +59,19 @@ tags = {
                 availability_zone = "us-east-1c"
             },
         ]
+    # app_route_table inputs
+        app_route_table = [
+            {
+                name = "app_route_table"
+                route = [
+                ]
+            },
+            {
+                name = "app_route_table_2"
+                route = [
+                ]
+            }
+        ]
 
 
 

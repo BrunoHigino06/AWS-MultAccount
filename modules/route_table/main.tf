@@ -4,7 +4,7 @@ resource "aws_route_table" "route_table" {
   vpc_id           = var.route_table[count.index].vpc_id
   propagating_vgws = var.route_table[count.index].propagating_vgws
   dynamic "route" {
-    for_each = var.route_table
+    for_each = var.route_table[count.index].route
     content {
       cidr_block                = route.value.cidr_block
       gateway_id                = route.value.gateway_id
