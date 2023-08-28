@@ -1,8 +1,8 @@
 # Tags variables
-variable "tags" {
-  type = map(string)
-  description = "Tags for common use"
-}
+  variable "tags" {
+    type = map(string)
+    description = "Tags for common use"
+  }
 
 # app environment variables
   # app_vpc variables

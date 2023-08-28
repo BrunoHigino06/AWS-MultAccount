@@ -1,8 +1,8 @@
 # Tags for common use inputs
-tags = {
-    Environment = "production"
-    Owner       = "Cloud Admin"
-}
+    tags = {
+        Environment = "production"
+        Owner       = "Cloud Admin"
+    }
 
 # app environment inputs
     # app_vpc inputs
