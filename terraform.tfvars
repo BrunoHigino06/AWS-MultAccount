@@ -63,12 +63,32 @@ tags = {
         app_route_table = [
             {
                 name = "app_route_table"
-                route = [
-                ]
-            },
+                route = []
+            }
+        ]
+    # app_network_acl inputs
+        app_network_acl = [
             {
-                name = "app_route_table_2"
-                route = [
+                name = "app_network_acl"
+                ingress = [
+                    {
+                        protocol    = "tcp" 
+                        rule_no     = "100"
+                        action      = "allow"
+                        cidr_block  = "0.0.0.0/0"
+                        from_port   = "0"
+                        to_port     = "65535"
+                    }
+                ]
+                egress = [
+                    {
+                        protocol    = "tcp" 
+                        rule_no     = "100"
+                        action      = "allow"
+                        cidr_block  = "0.0.0.0/0"
+                        from_port   = "0"
+                        to_port     = "65535"
+                    }
                 ]
             }
         ]
@@ -100,3 +120,36 @@ tags = {
                 availability_zone = "us-east-1c"
             },
         ]
+    # app_route_table inputs
+        analytics_route_table = [
+            {
+                name = "analytics_route_table"
+                route = []
+            }
+        ]
+    # analytics_network_acl inputs
+        analytics_network_acl = [
+            {
+                name = "analytics_network_acl"
+                ingress = [
+                    {
+                        protocol    = "tcp" 
+                        rule_no     = "100"
+                        action      = "allow"
+                        cidr_block  = "0.0.0.0/0"
+                        from_port   = "0"
+                        to_port     = "65535"
+                    }
+                ]
+                egress = [
+                    {
+                        protocol    = "tcp" 
+                        rule_no     = "100"
+                        action      = "allow"
+                        cidr_block  = "0.0.0.0/0"
+                        from_port   = "0"
+                        to_port     = "65535"
+                    }
+                ]
+            }
+        ]    
