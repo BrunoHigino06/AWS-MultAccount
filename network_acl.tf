@@ -51,7 +51,7 @@ module "analytics_network_acl" {
     for network_acl in var.analytics_network_acl :
     {
         name       = network_acl.name
-        vpc_id     = module.app_vpc.vpc_id
+        vpc_id     = module.analytics_vpc.vpc_id
         tags       = var.tags
         subnet_ids = [
           module.analytics_subnet.subnet_id[0], 

@@ -26,7 +26,7 @@ module "analytics_route_table" {
     for route_table in var.analytics_route_table :
     {
       name   = route_table.name
-      vpc_id = module.app_vpc.vpc_id
+      vpc_id = module.analytics_vpc.vpc_id
       tags   = var.tags
       route  = [
         for route_info in route_table.route :

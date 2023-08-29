@@ -38,7 +38,7 @@
       description                 = "route table variables"
       default = null
     }
-  # app_network_acl variable
+  # app_network_acl variables
     variable "app_network_acl" {
       type            = list(object({
         name          = string
@@ -60,7 +60,6 @@
         }))
       }))
     }
-
 # analytics environment variables
   # analytics_vpc variables
     variable "analytics_vpc" {
