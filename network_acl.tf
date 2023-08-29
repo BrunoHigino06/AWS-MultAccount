@@ -42,6 +42,10 @@ module "app_network_acl" {
         ]
     }
   ]
+  depends_on = [
+    module.app_vpc,
+    module.app_subnet
+  ]
 }
 
 module "analytics_network_acl" {
@@ -81,5 +85,9 @@ module "analytics_network_acl" {
           }
         ]
     }
+  ]
+  depends_on = [
+    module.analytics_vpc,
+    module.analytics_subnet
   ]
 }

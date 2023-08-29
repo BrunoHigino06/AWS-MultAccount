@@ -17,6 +17,9 @@ module "app_route_table" {
       ]
     }
   ]
+  depends_on = [
+    module.app_vpc
+  ]
 }
 
 module "analytics_route_table" {
@@ -37,5 +40,8 @@ module "analytics_route_table" {
         }
       ]
     }
+  ]
+  depends_on = [
+    module.analytics_vpc
   ]
 }

@@ -60,6 +60,29 @@
         }))
       }))
     }
+  # app security group vars
+    variable "app_security_group" {
+      type                     = list(object({
+        name                   = optional(string)
+        description            = optional(string)
+        egress                 = list(object({
+          from_port            = string 
+          to_port              = string
+          protocol             = string
+          cidr_blocks          = optional(list(string))
+          description          = optional(string)
+          ipv6_cidr_blocks     = optional(list(string))
+        }))
+        ingress       = list(object({
+          from_port            = string 
+          to_port              = string
+          protocol             = string
+          cidr_blocks          = optional(list(string))
+          description          = optional(string)
+          ipv6_cidr_blocks     = optional(list(string))
+        }))
+      }))
+    }
 # analytics environment variables
   # analytics_vpc variables
     variable "analytics_vpc" {
@@ -112,6 +135,29 @@
           cidr_block  = string
           from_port   = string
           to_port     = string
+        }))
+      }))
+    }
+  # analytics security group vars
+    variable "analytics_security_group" {
+      type                     = list(object({
+        name                   = optional(string)
+        description            = optional(string)
+        egress                 = list(object({
+          from_port            = string 
+          to_port              = string
+          protocol             = string
+          cidr_blocks          = optional(list(string))
+          description          = optional(string)
+          ipv6_cidr_blocks     = optional(list(string))
+        }))
+        ingress       = list(object({
+          from_port            = string 
+          to_port              = string
+          protocol             = string
+          cidr_blocks          = optional(list(string))
+          description          = optional(string)
+          ipv6_cidr_blocks     = optional(list(string))
         }))
       }))
     }

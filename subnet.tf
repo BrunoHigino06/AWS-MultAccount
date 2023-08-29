@@ -10,6 +10,9 @@ module "app_subnet" {
       tags              = var.tags
     }
   ]
+  depends_on = [ 
+    module.app_vpc
+  ]
 }
 
 module "analytics_subnet" {
@@ -23,5 +26,9 @@ module "analytics_subnet" {
       vpc_id            = module.analytics_vpc.vpc_id
       tags              = var.tags
     }
+  ]
+
+  depends_on = [
+    module.analytics_vpc
   ]
 }

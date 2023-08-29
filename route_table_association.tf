@@ -1,5 +1,5 @@
 module "app_route_table_association" {
-  source = "./modules/route-tabel_association"
+  source = "./modules/route_tabel_association"
 
   route_table_association = [
     {
@@ -39,10 +39,14 @@ module "app_route_table_association" {
         route_table_id = module.app_route_table.route_table_id[0]
     }
   ]
+  depends_on = [
+    module.app_subnet,
+    module.app_route_table
+  ]
 }
 
 module "analytics_route_table_association" {
-  source = "./modules/route-tabel_association"
+  source = "./modules/route_tabel_association"
 
   route_table_association = [
     {
@@ -57,5 +61,9 @@ module "analytics_route_table_association" {
         subnet_id      = module.analytics_subnet.subnet_id[2]
         route_table_id = module.analytics_route_table.route_table_id[0]
     }
+  ]
+  depends_on = [
+    module.analytics_subnet,
+    module.analytics_route_table
   ]
 }
