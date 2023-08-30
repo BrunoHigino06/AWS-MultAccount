@@ -5,22 +5,29 @@
       description = "Tags for common use"
     }
   # Transit gateway variable
-  variable "TGW_ENV" {
-    type                              = list(object({
-      name                            = string
-      description                     = optional(string)
-      amazon_side_asn                 = optional(string)
-      auto_accept_shared_attachments  = optional(string)
-      default_route_table_association = optional(string)
-      default_route_table_propagation = optional(string)
-      dns_support                     = optional(string)
-      transit_gateway_cidr_blocks     = optional(string)
-      vpn_ecmp_support                = optional(string)
-    }))
-    default = null
-    description = "Transit gateway variables"
-  }
-
+    variable "transit_gateway" {
+      type                              = list(object({
+        name                            = string
+        description                     = optional(string)
+        amazon_side_asn                 = optional(string)
+        auto_accept_shared_attachments  = optional(string)
+        default_route_table_association = optional(string)
+        default_route_table_propagation = optional(string)
+        dns_support                     = optional(string)
+        transit_gateway_cidr_blocks     = optional(string)
+        vpn_ecmp_support                = optional(string)
+      }))
+      default = null
+      description = "Transit gateway variables"
+    }
+  # transit_gateway_route_table variables
+    variable "transit_gateway_route_table" {
+      type                 = list(object({
+        name               = string
+      }))
+      default = null
+      description = "Transit gateway route table variables"
+    }
 # app environment variables
   # app_vpc variables
     variable "app_vpc" {

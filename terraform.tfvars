@@ -5,10 +5,19 @@
             Owner       = "Cloud Admin"
         }
     # Transit gateway inputs
-        TGW_ENV = [
+        transit_gateway = [
             {
                 name = "TGW_ENV"
                 description = "Transit gateway to make communication between app account and analytics account"
+            }
+        ]
+    # Transit gateway route table inputs
+        transit_gateway_route_table = [
+            {
+                name = "app_TGW_route_table"
+            },
+            {
+                name = "analytics_TGW_route_table"
             }
         ]
 
@@ -64,6 +73,21 @@
             {
                 name              = "database_3"
                 cidr_block        = "10.0.33.0/24"
+                availability_zone = "us-east-1c"
+            },
+            {
+                name              = "transport_1"
+                cidr_block        = "10.0.41.0/24"
+                availability_zone = "us-east-1a"
+            },
+            {
+                name              = "transport_1"
+                cidr_block        = "10.0.42.0/24"
+                availability_zone = "us-east-1b"
+            },
+            {
+                name              = "transport_1"
+                cidr_block        = "10.0.43.0/24"
                 availability_zone = "us-east-1c"
             },
         ]
@@ -126,8 +150,6 @@
 
             }
         ]
-
-
 
 # analytics environment inputs
     # analytics_vpc inputs
