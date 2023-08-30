@@ -1,8 +1,16 @@
-# Tags for common use inputs
-    tags = {
-        Environment = "production"
-        Owner       = "Cloud Admin"
-    }
+# Global inputs
+    # Tags for common use inputs
+        tags = {
+            Environment = "production"
+            Owner       = "Cloud Admin"
+        }
+    # Transit gateway inputs
+        TGW_ENV = [
+            {
+                name = "TGW_ENV"
+                description = "Transit gateway to make communication between app account and analytics account"
+            }
+        ]
 
 # app environment inputs
     # app_vpc inputs
