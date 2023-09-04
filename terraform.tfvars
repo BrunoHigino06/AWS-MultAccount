@@ -20,6 +20,15 @@
                 name = "analytics_TGW_route_table"
             }
         ]
+    # transit_gateway_route_table inputs
+        transit_gateway_vpc_attachment = [ 
+            {
+                name                 = "app_attachment"
+                subnet_names         = ["transport_1", "transport_2", "transport_3"]
+                transit_gateway_name = "TGW_ENV"
+                vpc_name             = "app_vpc"
+            }
+        ]
 
 # app environment inputs
     # app_vpc inputs
@@ -81,12 +90,12 @@
                 availability_zone = "us-east-1a"
             },
             {
-                name              = "transport_1"
+                name              = "transport_2"
                 cidr_block        = "10.0.42.0/24"
                 availability_zone = "us-east-1b"
             },
             {
-                name              = "transport_1"
+                name              = "transport_3"
                 cidr_block        = "10.0.43.0/24"
                 availability_zone = "us-east-1c"
             },

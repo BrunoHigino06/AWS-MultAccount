@@ -28,6 +28,15 @@
       default = null
       description = "Transit gateway route table variables"
     }
+  # transit_gateway_vpc_attachment variables
+    variable "transit_gateway_vpc_attachment" {
+      type = list(object({
+        name                                              = string
+        subnet_names                                      = list(string)
+        transit_gateway_name                              = string
+        vpc_name                                          = string
+      }))
+    }
 # app environment variables
   # app_vpc variables
     variable "app_vpc" {

@@ -1,9 +1,9 @@
 # transit_gateway_attachment resource
 resource "aws_ec2_transit_gateway_vpc_attachment" "transit_gateway_vpc_attachment" {
-  count = length(var.transit_gateway_vpc_attachment)
-  subnet_ids                                      = data.aws_subnet.data_subnet_id[*].id
-  transit_gateway_id                              = data.aws_ec2_transit_gateway.data_transit_gateway_id[*].id
-  vpc_id                                          = data.aws_vpc.data_vpc_id[*].id
+  count                                           = length(var.transit_gateway_vpc_attachment)
+  subnet_ids                                      = [for subnet_name in var.transit_gateway_vpc_attachment[count.index].subnet_names : data.aws_subnet.data_subnet_id[subnet_name].id]
+  transit_gateway_id                              = data.aws_ec2_transit_gateway.data_transit_gateway_id[count.index].id
+  vpc_id                                          = data.aws_vpc.data_vpc_id[count.index].id
   appliance_mode_support                          = var.transit_gateway_vpc_attachment[count.index].appliance_mode_support
   dns_support                                     = var.transit_gateway_vpc_attachment[count.index].dns_support
   ipv6_support                                    = var.transit_gateway_vpc_attachment[count.index].ipv6_support
