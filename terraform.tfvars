@@ -24,9 +24,15 @@
         transit_gateway_vpc_attachment = [ 
             {
                 name                 = "app_attachment"
-                subnet_names         = ["transport_1", "transport_2", "transport_3"]
+                subnet_unique_names  = ["app_transport_1", "app_transport_2", "app_transport_3"]
                 transit_gateway_name = "TGW_ENV"
                 vpc_name             = "app_vpc"
+            },
+            {
+                name                 = "analytics_attachment"
+                subnet_unique_names  = ["analytics_transport_1", "analytics_transport_2", "analytics_transport_3"]
+                transit_gateway_name = "TGW_ENV"
+                vpc_name             = "analytics_vpc"
             }
         ]
 
@@ -181,6 +187,21 @@
             {
                 name              = "ELT_3"
                 cidr_block        = "172.0.3.0/24"
+                availability_zone = "us-east-1c"
+            },
+            {
+                name              = "transport_1"
+                cidr_block        = "172.0.4.0/24"
+                availability_zone = "us-east-1a"
+            },
+            {
+                name              = "transport_2"
+                cidr_block        = "172.0.5.0/24"
+                availability_zone = "us-east-1b"
+            },
+            {
+                name              = "transport_3"
+                cidr_block        = "172.0.6.0/24"
                 availability_zone = "us-east-1c"
             },
         ]

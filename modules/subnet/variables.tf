@@ -2,6 +2,7 @@
 variable "subnet" {
   type                                             = list(object({
     name                                           = string
+    unique_name                                    = string
     vpc_id                                         = optional(string)
     cidr_block                                     = optional(string)
     assign_ipv6_address_on_creation                = optional(string)

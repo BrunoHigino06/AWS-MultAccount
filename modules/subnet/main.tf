@@ -17,6 +17,9 @@ resource "aws_subnet" "subnet" {
   outpost_arn                                    = var.subnet[count.index].outpost_arn
   private_dns_hostname_type_on_launch            = var.subnet[count.index].private_dns_hostname_type_on_launch
   tags                                           = merge(var.subnet[count.index].tags,
-    {Name = var.subnet[count.index].name}
+    {
+      Name = var.subnet[count.index].name,
+      unique_name = var.subnet[count.index].unique_name
+    }
   )
 }

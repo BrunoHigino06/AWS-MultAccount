@@ -32,7 +32,7 @@
     variable "transit_gateway_vpc_attachment" {
       type = list(object({
         name                                              = string
-        subnet_names                                      = list(string)
+        subnet_unique_names                               = list(string)
         transit_gateway_name                              = string
         vpc_name                                          = string
       }))
