@@ -7,7 +7,7 @@ resource "aws_route_table" "route_table" {
     for_each = var.route_table[count.index].route
     content {
       cidr_block                = route.value.cidr_block
-      gateway_id                = route.value.gateway_id
+      gateway_id                = data.aws_internet_gateway.internet_gateway_id[route.value.gateway_name].id
       nat_gateway_id            = route.value.nat_gateway_id
       carrier_gateway_id        = route.value.carrier_gateway_id
       core_network_arn          = route.value.core_network_arn
@@ -21,6 +21,12 @@ resource "aws_route_table" "route_table" {
 
   }
   tags    = merge(var.route_table[count.index].tags,
-    {Name = var.route_table[count.index].name}
+    {
+      Name        = var.route_table[count.index].name,
+      unique_name = var.route_table[count.index].unique_name
+    }
   )
+  depends_on = [
+    data.aws_internet_gateway.internet_gateways
+  ]
 }

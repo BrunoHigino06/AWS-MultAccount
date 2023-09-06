@@ -60,15 +60,15 @@
     }
   # app_route_table variables
     variable "app_route_table" {
-    type                          = list(object({
-      name                        = string
+    type                            = list(object({
+      name                          = string
         route                       = list(object({
           cidr_block                = string
-          gateway_id                = optional(string)
+          gateway_name              = optional(string)
           transit_gateway_id        = optional(string)
         }))      
       }))
-      description                 = "route table variables"
+      description                   = "route table variables"
       default = null
     }
   # app_network_acl variables

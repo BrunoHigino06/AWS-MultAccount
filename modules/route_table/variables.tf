@@ -3,10 +3,11 @@ variable "route_table" {
   type                          = list(object({
     name                        = string
     vpc_id                      = string
+    unique_name                 = string
     propagating_vgws            = optional(list(string))
     route                       = list(object({
       cidr_block                = string
-      gateway_id                = optional(string)
+      gateway_name              = optional(string)
       nat_gateway_id            = optional(string)
       carrier_gateway_id        = optional(string)
       core_network_arn          = optional(string)

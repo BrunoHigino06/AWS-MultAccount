@@ -110,7 +110,12 @@
         app_route_table = [
             {
                 name = "app_route_table"
-                route = []
+                route = [
+                    {
+                        gateway_name = "my_igw"
+                        cidr_block   = "0.0.0.0/0"
+                    }
+                ]
             }
         ]
     # app_network_acl inputs
