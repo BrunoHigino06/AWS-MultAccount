@@ -7,7 +7,7 @@ variable "route_table" {
     propagating_vgws            = optional(list(string))
     route                       = list(object({
       cidr_block                = string
-      gateway_name              = optional(string)
+      gateway_id                = optional(string)
       nat_gateway_id            = optional(string)
       carrier_gateway_id        = optional(string)
       core_network_arn          = optional(string)

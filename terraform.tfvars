@@ -9,7 +9,11 @@
             {
                 name = "TGW_ENV"
                 description = "Transit gateway to make communication between app account and analytics account"
-            }
+            },
+            {
+                name = "TGW_TEST"
+                description = "Transit gateway to make communication between app account and analytics account"
+            },
         ]
     # Transit gateway route table inputs
         transit_gateway_route_table = [
@@ -112,8 +116,8 @@
                 name = "app_route_table"
                 route = [
                     {
-                        gateway_name = "my_igw"
-                        cidr_block   = "0.0.0.0/0"
+                        gateway_name  = "igw"
+                        cidr_block  = "0.0.0.0/0"
                     }
                 ]
             }

@@ -65,7 +65,7 @@
         route                       = list(object({
           cidr_block                = string
           gateway_name              = optional(string)
-          transit_gateway_id        = optional(string)
+          transit_gateway_name      = optional(string)
         }))      
       }))
       description                   = "route table variables"

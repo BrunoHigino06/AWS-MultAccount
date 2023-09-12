@@ -11,15 +11,16 @@ module "app_route_table" {
       route       = [
         for route_info in route_table.route :
         {
-          cidr_block          = route_info.cidr_block
-          gateway_name        = route_info.gateway_name
-          transit_gateway_id  = route_info.transit_gateway_id
+          cidr_block           = route_info.cidr_block
+          gateway_id           = data.aws_internet_gateway.internet_gateway_id[route_info.gateway_name].id
+          transit_gateway_id   = route_info.transit_gateway_name
         }
       ]
     }
   ]
   depends_on = [
-    module.app_vpc
+    module.app_vpc,
+    module.transit_gateway_attachment
   ]
 }
 
@@ -36,14 +37,15 @@ module "analytics_route_table" {
       route       = [
         for route_info in route_table.route :
         {
-          cidr_block          = route_info.cidr_block
-          gateway_id          = route_info.gateway_id
-          transit_gateway_id  = route_info.transit_gateway_id
+          cidr_block           = route_info.cidr_block
+          gateway_id           = route_info.gateway_id
+          transit_gateway_name = route_info.transit_gateway_name
         }
       ]
     }
   ]
   depends_on = [
-    module.analytics_vpc
+    module.analytics_vpc,
+    module.transit_gateway_attachment
   ]
 }
