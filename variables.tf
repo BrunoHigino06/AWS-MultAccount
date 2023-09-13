@@ -4,6 +4,15 @@
       type = map(string)
       description = "Tags for common use"
     }
+  # Internet gateway variables
+    variable "internet_gateway" {
+      type            = list(object({
+        name          = string
+        vpc_name      = string
+      }))
+      description = "Internet gateway variables"
+      default = null
+    }
   # Transit gateway variable
     variable "transit_gateway" {
       type                              = list(object({
@@ -64,8 +73,8 @@
       name                          = string
         route                       = list(object({
           cidr_block                = string
-          gateway_name              = optional(string)
-          transit_gateway_name      = optional(string)
+          gateway_type              = string
+          gateway_name              = string
         }))      
       }))
       description                   = "route table variables"
@@ -138,15 +147,15 @@
     }
   # analytics_route_table variables
     variable "analytics_route_table" {
-    type                          = list(object({
-      name                        = string
+    type                            = list(object({
+      name                          = string
         route                       = list(object({
           cidr_block                = string
-          gateway_id                = optional(string)
-          transit_gateway_id        = optional(string)
+          gateway_type              = string
+          gateway_name              = string
         }))      
       }))
-      description                 = "route table variables"
+      description                   = "route table variables"
       default = null
     }
   # analytics_network_acl variable

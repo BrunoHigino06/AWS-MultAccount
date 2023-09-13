@@ -4,16 +4,23 @@
             Environment = "production"
             Owner       = "Cloud Admin"
         }
+    # Internet Gateway inputs
+        internet_gateway = [ 
+            {
+                name     = "app_igw"
+                vpc_name = "app_vpc"
+            }, 
+            {
+                name     = "analytics_igw"
+                vpc_name = "analytics_vpc"
+            }
+        ]
     # Transit gateway inputs
         transit_gateway = [
             {
                 name = "TGW_ENV"
                 description = "Transit gateway to make communication between app account and analytics account"
-            },
-            {
-                name = "TGW_TEST"
-                description = "Transit gateway to make communication between app account and analytics account"
-            },
+            }
         ]
     # Transit gateway route table inputs
         transit_gateway_route_table = [
@@ -110,18 +117,6 @@
                 availability_zone = "us-east-1c"
             },
         ]
-    # app_route_table inputs
-        app_route_table = [
-            {
-                name = "app_route_table"
-                route = [
-                    {
-                        gateway_name  = "igw"
-                        cidr_block  = "0.0.0.0/0"
-                    }
-                ]
-            }
-        ]
     # app_network_acl inputs
         app_network_acl = [
             {
@@ -145,6 +140,23 @@
                         from_port   = "0"
                         to_port     = "65535"
                     }
+                ]
+            }
+        ]
+        app_route_table = [
+            {
+                name        = "app_route_table"
+                route       = [
+                    {
+                        cidr_block   = "0.0.0.0/0"
+                        gateway_type = "gateway_id"
+                        gateway_name = "app_igw"
+                    },
+                    {
+                        cidr_block   = "198.0.0.0/16"
+                        gateway_type = "transit_gateway_id"
+                        gateway_name = "TGW_ENV"
+                    },
                 ]
             }
         ]
@@ -214,11 +226,17 @@
                 availability_zone = "us-east-1c"
             },
         ]
-    # app_route_table inputs
+    # analytics_route_table inputs
         analytics_route_table = [
             {
                 name = "analytics_route_table"
-                route = []
+                route = [
+                    {
+                        cidr_block   = "0.0.0.0/0"
+                        gateway_type = "gateway_id"
+                        gateway_name = "analytics_igw"
+                    },
+                ]
             }
         ]
     # analytics_network_acl inputs
