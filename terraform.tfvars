@@ -143,22 +143,39 @@
                 ]
             }
         ]
+    # app_route_table inputs
         app_route_table = [
             {
-                name        = "app_route_table"
-                route       = [
-                    {
-                        cidr_block   = "0.0.0.0/0"
-                        gateway_type = "gateway_id"
-                        gateway_name = "app_igw"
-                    },
-                    {
-                        cidr_block   = "198.0.0.0/16"
-                        gateway_type = "transit_gateway_id"
-                        gateway_name = "TGW_ENV"
-                    },
-                ]
-            }
+                name        = "alb_route_table"
+                route       = []
+            },
+            {
+                name        = "front_end_route_table"
+                route       = []
+            },
+            {
+                name        = "database_route_table"
+                route       = []
+            },
+            {
+                name        = "transport_route_table"
+                route       = []
+            },
+        ]
+    # app_route_table_association inputs
+        app_route_table_association = [
+            {
+                subnet_name      = "app_alb_1"
+                route_table_name = "alb_route_table"
+            },
+            {
+                subnet_name      = "app_alb_2"
+                route_table_name = "alb_route_table"
+            },
+            {
+                subnet_name      = "app_alb_3"
+                route_table_name = "alb_route_table"
+            },
         ]
     # app_seucrity_group inputs
         app_security_group = [
