@@ -147,7 +147,16 @@
         app_route_table = [
             {
                 name        = "alb_route_table"
-                route       = []
+                route       = [
+                    {
+                        cidr_block   = "0.0.0.0/0"
+                        gateway_name = "app_igw"
+                    },
+                    {
+                        cidr_block           = "192.0.0.0/16"
+                        transit_gateway_name = "TGW_ENV"
+                    }
+                ]
             },
             {
                 name        = "front_end_route_table"

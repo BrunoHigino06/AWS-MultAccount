@@ -11,9 +11,9 @@ module "app_route_table" {
         route                 = [
             for route in route_table.route : 
             {
-                cidr_block   = route.cidr_block
-                gateway_type = route.gateway_type
-                gateway_name = route.gateway_name
+                cidr_block           = route.cidr_block
+                gateway_name         = route.gateway_name
+                transit_gateway_name = route.transit_gateway_name
             }
         ]
     }
@@ -37,9 +37,9 @@ module "analytics_route_table" {
         route                 = [
             for route in route_table.route : 
             {
-                cidr_block   = route.cidr_block
-                gateway_type = route.gateway_type
-                gateway_name = route.gateway_name
+                cidr_block           = route.cidr_block
+                gateway_name         = route.gateway_name
+                transit_gateway_name = route.transit_gateway_name
             }
         ]
     }

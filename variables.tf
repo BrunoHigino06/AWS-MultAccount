@@ -73,8 +73,8 @@
       name                          = string
         route                       = list(object({
           cidr_block                = string
-          gateway_type              = string
-          gateway_name              = string
+          gateway_name              = optional(string)
+          transit_gateway_name      = optional(string)
         }))      
       }))
       description                   = "route table variables"
@@ -162,8 +162,8 @@
       name                          = string
         route                       = list(object({
           cidr_block                = string
-          gateway_type              = string
-          gateway_name              = string
+          gateway_name              = optional(string)
+          transit_gateway_name      = optional(string)
         }))      
       }))
       description                   = "route table variables"
