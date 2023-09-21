@@ -5,7 +5,7 @@ module "app_route_table" {
     for route_table in var.app_route_table :
     {
         name                  = route_table.name
-        unique_name           = route_table.name
+        unique_name           = "app_${route_table.name}"
         vpc_id                = module.app_vpc.vpc_id
         tags                  = var.tags
         route                 = [
@@ -31,7 +31,7 @@ module "analytics_route_table" {
     for route_table in var.analytics_route_table :
     {
         name                  = route_table.name
-        unique_name           = route_table.name
+        unique_name           = "analytics_${route_table.name}"
         vpc_id                = module.analytics_vpc.vpc_id
         tags                  = var.tags
         route                 = [

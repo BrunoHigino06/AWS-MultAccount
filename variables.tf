@@ -80,12 +80,11 @@
       description                   = "route table variables"
       default = null
     }
-  # Route table association variables
   # route table association variables
     variable "app_route_table_association" {
       type = list(object({
-        subnet_name      = optional(string)
-        route_table_name  = string
+        subnet_unique_name      = optional(string)
+        route_table_unique_name  = string
         gateway_name      = optional(string)
       }))
       description = "route table association variables"
@@ -169,6 +168,16 @@
       description                   = "route table variables"
       default = null
     }
+  # route table association variables
+    variable "analytics_route_table_association" {
+      type = list(object({
+        subnet_unique_name      = optional(string)
+        route_table_unique_name  = string
+        gateway_name      = optional(string)
+      }))
+      description = "route table association variables"
+      default = null
+    } 
   # analytics_network_acl variable
     variable "analytics_network_acl" {
       type            = list(object({

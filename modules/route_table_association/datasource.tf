@@ -1,7 +1,7 @@
 locals {
   internet_gateway_name = flatten([for association in var.route_table_association : association.gateway_name])
-  subnet_unique_names     = flatten([for association in var.route_table_association : association.subnet_name])
-  route_table_unique_name = flatten([for association in var.route_table_association : association.route_table_name])
+  subnet_unique_names     = flatten([for association in var.route_table_association : association.subnet_unique_name])
+  route_table_unique_name = flatten([for association in var.route_table_association : association.route_table_unique_name])
 }
 
 data "aws_internet_gateway" "internet_gateway_id" {

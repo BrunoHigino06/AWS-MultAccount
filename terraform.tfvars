@@ -147,19 +147,10 @@
         app_route_table = [
             {
                 name        = "alb_route_table"
-                route       = [
-                    {
-                        cidr_block   = "0.0.0.0/0"
-                        gateway_name = "app_igw"
-                    },
-                    {
-                        cidr_block           = "192.0.0.0/16"
-                        transit_gateway_name = "TGW_ENV"
-                    }
-                ]
+                route       = []
             },
             {
-                name        = "front_end_route_table"
+                name        = "frontend_route_table"
                 route       = []
             },
             {
@@ -170,20 +161,64 @@
                 name        = "transport_route_table"
                 route       = []
             },
+            {
+                name        = "igw_route_table"
+                route       = []
+            },
         ]
     # app_route_table_association inputs
         app_route_table_association = [
             {
-                subnet_name      = "app_alb_1"
-                route_table_name = "alb_route_table"
+                subnet_unique_name      = "app_alb_1"
+                route_table_unique_name = "app_alb_route_table"
             },
             {
-                subnet_name      = "app_alb_2"
-                route_table_name = "alb_route_table"
+                subnet_unique_name      = "app_alb_2"
+                route_table_unique_name = "app_alb_route_table"
             },
             {
-                subnet_name      = "app_alb_3"
-                route_table_name = "alb_route_table"
+                subnet_unique_name      = "app_alb_3"
+                route_table_unique_name = "app_alb_route_table"
+            },
+            {
+                subnet_unique_name      = "app_frontend_1"
+                route_table_unique_name = "app_frontend_route_table"
+            },
+            {
+                subnet_unique_name      = "app_frontend_2"
+                route_table_unique_name = "app_frontend_route_table"
+            },
+            {
+                subnet_unique_name      = "app_frontend_3"
+                route_table_unique_name = "app_frontend_route_table"
+            },
+            {
+                subnet_unique_name      = "app_database_1"
+                route_table_unique_name = "app_database_route_table"
+            },
+            {
+                subnet_unique_name      = "app_database_2"
+                route_table_unique_name = "app_database_route_table"
+            },
+            {
+                subnet_unique_name      = "app_database_3"
+                route_table_unique_name = "app_database_route_table"
+            },
+            {
+                subnet_unique_name      = "app_transport_1"
+                route_table_unique_name = "app_transport_route_table"
+            },
+            {
+                subnet_unique_name      = "app_transport_2"
+                route_table_unique_name = "app_transport_route_table"
+            },
+            {
+                subnet_unique_name      = "app_transport_3"
+                route_table_unique_name = "app_transport_route_table"
+            },
+            {
+                gateway_name            = "app_igw"
+                route_table_unique_name = "app_igw_route_table"
             },
         ]
     # app_seucrity_group inputs
@@ -232,7 +267,7 @@
                 availability_zone = "us-east-1b"
             },
             {
-                name              = "ELT_3"
+                name              = "ETL_3"
                 cidr_block        = "172.0.128.0/18"
                 availability_zone = "us-east-1c"
             },
@@ -255,14 +290,47 @@
     # analytics_route_table inputs
         analytics_route_table = [
             {
-                name = "analytics_route_table"
-                route = [
-                    {
-                        cidr_block   = "0.0.0.0/0"
-                        gateway_type = "gateway_id"
-                        gateway_name = "analytics_igw"
-                    },
-                ]
+                name = "etl_route_table"
+                route = []
+            },
+            {
+                name = "transport_route_table"
+                route = []
+            },
+            {
+                name = "igw_route_table"
+                route = []
+            },
+        ]
+    # analytics_route_table_association inputs
+        analytics_route_table_association = [
+            {
+                subnet_unique_name      = "analytics_ETL_1"
+                route_table_unique_name = "analytics_etl_route_table"
+            },
+            {
+                subnet_unique_name      = "analytics_ETL_2"
+                route_table_unique_name = "analytics_etl_route_table"
+            },
+            {
+                subnet_unique_name      = "analytics_ETL_3"
+                route_table_unique_name = "analytics_etl_route_table"
+            },
+            {
+                subnet_unique_name      = "analytics_transport_1"
+                route_table_unique_name = "analytics_transport_route_table"
+            },
+            {
+                subnet_unique_name      = "analytics_transport_2"
+                route_table_unique_name = "analytics_transport_route_table"
+            },
+            {
+                subnet_unique_name      = "analytics_transport_3"
+                route_table_unique_name = "analytics_transport_route_table"
+            },
+            {
+                gateway_name            = "analytics_igw"
+                route_table_unique_name = "analytics_igw_route_table"
             }
         ]
     # analytics_network_acl inputs
