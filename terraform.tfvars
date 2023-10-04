@@ -160,11 +160,7 @@
             {
                 name        = "transport_route_table"
                 route       = []
-            },
-            {
-                name        = "igw_route_table"
-                route       = []
-            },
+            }
         ]
     # app_route_table_association inputs
         app_route_table_association = [
@@ -215,11 +211,7 @@
             {
                 subnet_unique_name      = "app_transport_3"
                 route_table_unique_name = "app_transport_route_table"
-            },
-            {
-                gateway_name            = "app_igw"
-                route_table_unique_name = "app_igw_route_table"
-            },
+            }
         ]
     # app_seucrity_group inputs
         app_security_group = [
@@ -296,11 +288,7 @@
             {
                 name = "transport_route_table"
                 route = []
-            },
-            {
-                name = "igw_route_table"
-                route = []
-            },
+            }
         ]
     # analytics_route_table_association inputs
         analytics_route_table_association = [
@@ -327,10 +315,6 @@
             {
                 subnet_unique_name      = "analytics_transport_3"
                 route_table_unique_name = "analytics_transport_route_table"
-            },
-            {
-                gateway_name            = "analytics_igw"
-                route_table_unique_name = "analytics_igw_route_table"
             }
         ]
     # analytics_network_acl inputs
