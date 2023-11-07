@@ -125,7 +125,7 @@
           description          = optional(string)
           ipv6_cidr_blocks     = optional(list(string))
         }))
-        ingress       = list(object({
+        ingress                = list(object({
           from_port            = string 
           to_port              = string
           protocol             = string
